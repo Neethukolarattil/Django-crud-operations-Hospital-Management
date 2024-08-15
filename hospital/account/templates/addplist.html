@@ -1,0 +1,30 @@
+{% extends 'nav.html' %}
+{% block nav %}
+
+<table class="table align-middle">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Actions</th> <!-- New column for actions -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patient %}
+        <tr>
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.fname }} {{ patient.lname }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.phone }}</td>
+            <td>
+                <a href="{% url 'pedt' patient.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'pdel' patient.id %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock nav %}
